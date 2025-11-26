@@ -1,6 +1,8 @@
 // Create a new router
 const express = require("express")
 const router = express.Router()
+const { redirectLogin } = require('./users');
+const { check } = require("express-validator");
 
 router.get('/search',function(req, res, next){
     res.render("search.ejs")
@@ -23,22 +25,24 @@ router.get('/list', function(req, res, next) {
     });
 
 
-    router.get('/addbook', function (req, res, next) {
+    router.get('/addbook', redirectLogin, function (req, res, next) {
         res.render("addbook.ejs")
     });
 
 
     router.post('/bookadded', function (req, res, next) {           //after the form is submitted
     // saving data in database
+    [check('name').notEmpty(),
+    check('price').isFloat({ min: 0.01 })]
     let sqlquery = "INSERT INTO books (name, price) VALUES (?,?)"
     // execute sql query
-    let newrecord = [req.body.name, req.body.price]
+    let newrecord = [req.sanitize(req.body.name), req.sanitize(req.body.price)]
     db.query(sqlquery, newrecord, (err, result) => {
         if (err) {
             next(err)
         }
         else
-            res.send(' This book is added to database, name: '+ req.body.name + ' price £'+ req.body.price)
+            res.send(' This book is added to database, name: '+ req.sanitize(req.body.name) + ' price £'+  req.sanitize(req.body.price))
     })
 }) 
 

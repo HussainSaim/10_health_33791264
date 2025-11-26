@@ -27,3 +27,20 @@ The `require('dotenv').config()` statement in index.js loads these variables fro
    - `process.env.BB_DATABASE`
 
 
+## Sanitisation
+
+I have applied sanitisation to all INSERTS into the database.
+This includes:
+First Name
+Last Name
+Email
+Username
+Book Name
+Book Price
+
+I have not included password as the input is hashed before INSERT so XSS is not possible.
+
+
+## Validation
+
+I have valiadted the values of the name (of the book) to make sure it is not empty. I have also validated the price by ensuring it is a float of at least 0.01.
