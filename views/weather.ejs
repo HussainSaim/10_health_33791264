@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Weather - <%=shopData.shopName%></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Check the Weather</h1>
+    
+    <form method="GET" action="/weather/now">
+      <p>Enter city name: <input id="city" type="text" name="city" required /></p>
+      <input type="submit" value="Get Weather" />
+    </form>
+
+    <% if (locals.error) { %>
+      <div style="margin-top: 20px; padding: 15px; background-color: #ffeeee; border: 1px solid red; border-radius: 5px; color: red;">
+        <%= error %>
+      </div>
+    <% } %>
+
+    <% if (locals.weather) { %>
+      <div style="margin-top: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 5px;">
+        <h2>Weather in <%= weather.name %></h2>
+        <p><strong>Temperature:</strong> <%= weather.main.temp %>°C</p>
+        <p><strong>Feels like:</strong> <%= weather.main.feels_like %>°C</p>
+        <p><strong>Humidity:</strong> <%= weather.main.humidity %>%</p>
+        <p><strong>Description:</strong> <%= weather.weather[0].description %></p>
+      </div>
+    <% } %>
+  </body>
+</html>

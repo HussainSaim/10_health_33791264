@@ -44,3 +44,7 @@ I have not included password as the input is hashed before INSERT so XSS is not 
 ## Validation
 
 I have valiadted the values of the name (of the book) to make sure it is not empty. I have also validated the price by ensuring it is a float of at least 0.01.
+
+## API 
+
+The API consists of all the books in the database and allows it to be called upon. It can be sorted by name and price as well as the ability to search.
