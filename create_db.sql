@@ -4,16 +4,25 @@
 CREATE DATABASE IF NOT EXISTS health;
 USE health;
 
+ CREATE TABLE IF NOT EXISTS users (
+    id              INT AUTO_INCREMENT,
+    username        VARCHAR(50) NOT NULL UNIQUE,
+    firstName       VARCHAR(50) NOT NULL,
+    lastName        VARCHAR(50) NOT NULL,
+    email           VARCHAR(100) NOT NULL UNIQUE,
+    hashedPassword  VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id));
+
 -- Classes table
 CREATE TABLE classes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    category VARCHAR(50) NOT NULL,      -- e.g. Yoga, HIIT, Pilates
-    level VARCHAR(20) NOT NULL,         -- e.g. Beginner, Intermediate
+    category VARCHAR(50) NOT NULL,      
+    level VARCHAR(20) NOT NULL,         
     location VARCHAR(100) NOT NULL,
     class_datetime DATETIME NOT NULL,
-    capacity INT NOT NULL,
-    
+    capacity INT NOT NULL
+  
 );
 
 -- Bookings table
@@ -30,14 +39,6 @@ CREATE TABLE bookings (
       ON DELETE CASCADE
 );
 
- CREATE TABLE IF NOT EXISTS users (
-    id              INT AUTO_INCREMENT,
-    username        VARCHAR(50) NOT NULL UNIQUE,
-    firstName       VARCHAR(50) NOT NULL,
-    lastName        VARCHAR(50) NOT NULL,
-    email           VARCHAR(100) NOT NULL UNIQUE,
-    hashedPassword  VARCHAR(255) NOT NULL,
-    PRIMARY KEY(id));
 
 CREATE USER IF NOT EXISTS 'health_app'@'localhost' IDENTIFIED BY 'qwertyuiop'; 
 GRANT ALL PRIVILEGES ON health.* TO 'health_app'@'localhost';
