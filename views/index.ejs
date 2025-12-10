@@ -10,7 +10,7 @@
     <% if (user) { %>
       <p><strong>Logged in as: <%= user.firstName %> <%= user.lastName %></strong> (<%= user.email %>)</p>
       <p><a href="users/dashboard">My Dashboard</a> </p>
-      <p><a href="users/logout">Logout</a></p>
+      <p><a href="/logout">Logout</a></p>
     <% } else { %>
       <p><a href="users/register">Register with us</a></p>
       <p><a href="users/login">Login</a></p>
