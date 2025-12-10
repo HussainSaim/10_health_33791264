@@ -5,7 +5,7 @@ const { redirectLogin } = require('./users');
 const { check } = require("express-validator");
 
 
-router.get('/classes', function(req, res, next) {
+router.get('/', function(req, res, next) {
     let sqlquery = "SELECT * FROM classes";
     db.query(sqlquery, (err, result) => {
         if (err) {
@@ -17,12 +17,13 @@ router.get('/classes', function(req, res, next) {
         });
     });
 });
+
 router.get('/search',function(req, res, next){
     res.render("search.ejs")
 });
 
 router.get('/search-result', function (req, res, next) {
-    const term = req.query.search_text || '';
+    const term = req.sanitize(req.query.search_text || '');
 
     const sqlquery = "SELECT * FROM classes WHERE title LIKE ? OR category LIKE ? OR location LIKE ?";
     const values = ['%' + term + '%', '%' + term + '%', '%' + term + '%'];

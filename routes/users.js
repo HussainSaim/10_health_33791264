@@ -26,6 +26,7 @@ router.post('/registered',
     function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        res.send('There were validation errors: ');
         res.render('./register.ejs')
     }
     else {
@@ -44,7 +45,7 @@ router.post('/registered',
                 }
                 else {
                     let message = 'Hello '+ req.sanitize(req.body.first) + ' '+ req.sanitize(req.body.last) +' you are now registered!  We will send an email to you at ' + req.body.email
-                    message += ' Your password is: '+ req.body.password +' and your hashed password is: '+ hashedPassword
+                    message
                     res.send(message)
                 }
             })
@@ -62,7 +63,7 @@ router.get('/login', function (req, res, next) {
 router.post('/loggedin', function (req, res, next) {
     // comparing form data with database
     const plainPassword = req.body.password
-    const username = req.body.username
+    const username = req.sanitize(req.body.username)
     
     let sqlquery = "SELECT * FROM users WHERE username = ?"
     db.query(sqlquery, [username], (err, result) => {

@@ -33,6 +33,12 @@ app.use(expressSanitizer());
 // Define our application-specific data
 app.locals.shopData = {shopName: "Cassie's Classes"}
 
+// Make user session available to all views
+app.use((req, res, next) => {
+    res.locals.user = req.session.userDetails || null;
+    next();
+});
+
 // Load the route handlers
 const mainRoutes = require("./routes/main")
 app.use('/', mainRoutes)

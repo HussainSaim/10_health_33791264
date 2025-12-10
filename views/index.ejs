@@ -6,13 +6,19 @@
   </head>
   <body>
     <h1>Welcome to <%=shopData.shopName%></h1>
+    
+    <% if (user) { %>
+      <p><strong>Logged in as: <%= user.firstName %> <%= user.lastName %></strong> (<%= user.email %>)</p>
+      <p><a href="logout">Logout</a></p>
+    <% } else { %>
+      <p><a href="users/register">Register with us</a></p>
+      <p><a href="users/login">Login</a></p>
+    <% } %>
+    
+    <hr>
     <p><a href="about">About <%=shopData.shopName%></a></p>
     <p><a href="classes/search">Search for classes</a></p>
     <p><a href="classes">View all available classes</a></p>
     <p><a href="classes/booking">Book a class</a></p>
-    <p><a href="users/register">Register with us</a></p>
-    <p><a href="users/login">Login</a></p>
-    <p><a href = "logout">Logout</a></p>
-   
   </body>
 </html>
