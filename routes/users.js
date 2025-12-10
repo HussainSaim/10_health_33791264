@@ -105,6 +105,33 @@ router.post('/loggedin', function (req, res, next) {
     })
 });
 
+
+router.get('/dashboard', redirectLogin, function (req, res, next) {
+    const userId = req.session.userDetails.id;
+    
+    // Get all bookings for this user with class details
+    let sqlquery = `
+        SELECT bookings.id as booking_id, classes.title, classes.category, classes.level, 
+               classes.location, classes.class_datetime
+        FROM bookings
+        JOIN classes ON bookings.class_id = classes.id
+        WHERE bookings.user_id = ?
+        ORDER BY classes.class_datetime DESC
+    `;
+    
+    db.query(sqlquery, [userId], (err, result) => {
+        if (err) {
+            next(err);
+        } else {
+            res.render('dashboard.ejs', { 
+                bookings: result
+            });
+        }
+    });
+});
+
+
+
 // Export the router object and redirectLogin so index.js and other routes can access it
 module.exports = router
 module.exports.redirectLogin = redirectLogin

@@ -34,6 +34,7 @@ First Name
 Last Name
 Email
 Username
+As well as the additions made when creating a new class
 
 
 I have not included password as the input is hashed before INSERT so XSS is not possible.

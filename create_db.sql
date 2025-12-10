@@ -13,7 +13,7 @@ CREATE TABLE classes (
     location VARCHAR(100) NOT NULL,
     class_datetime DATETIME NOT NULL,
     capacity INT NOT NULL,
-    description TEXT
+    
 );
 
 -- Bookings table

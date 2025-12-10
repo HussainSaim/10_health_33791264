@@ -6,7 +6,7 @@ const { check } = require("express-validator");
 
 
 router.get('/', function(req, res, next) {
-    let sqlquery = "SELECT * FROM classes";
+    let sqlquery = "SELECT * FROM classes ORDER BY class_datetime";
     db.query(sqlquery, (err, result) => {
         if (err) {
             next(err);
@@ -77,7 +77,26 @@ router.post('/booked', redirectLogin, function (req, res, next) {
     });
 });
 
+router.get('/addclass', redirectLogin,function (req, res, next) {
+    res.render("addclass.ejs")
+});
 
+router.post('/classadded', function (req, res, next) {
+    [check('title').notEmpty().withMessage('Title is required'),
+    check('level').notEmpty().withMessage('Level is required'),
+    check('location').notEmpty().withMessage('Location is required'),
+    check('class_datetime').notEmpty().withMessage('Date & Time is required')]
+    check('capacity').notEmpty().withMessage('Capacity is required')
 
+    let sqlquery = "INSERT INTO classes (title, category, level, location, class_datetime, capacity) VALUES (?, ?, ?, ?, ?, ?)";
+    let newClass = [req.sanitize(req.body.title), req.sanitize(req.body.category), req.sanitize(req.body.level), req.sanitize(req.body.location), req.sanitize(req.body.class_datetime), req.sanitize(req.body.capacity)];  
+    db.query(sqlquery, newClass, (err, result) => {
+        if (err) {
+            next(err); 
+        } else {
+            res.send('<h2>New class added successfully!</h2>'); 
+        }
+    });
+});
 // Export the router object so index.js can access it
 module.exports = router

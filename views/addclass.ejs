@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add A Class</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+    </head>
+    <body> 
+    <h1>Add a New Class</h1>
+    <form action='classadded' method="POST"> 
+      <p>Class Title: <input type="text" name="title" required></p>       <!-- create form for user to input their class-->
+      <p>Category: <input type="text" name="category"></p>
+      <p>Level: <input type="text" name="level" required></p>
+      <p>Location: <input type="text" name="location" required></p>
+      <p>Date & Time: <input type="datetime-local" name="class_datetime" required></p>
+      <p>Capacity: <input type="number" name="capacity" required></p>
+      <input type="submit" value="Add Class">
+    </form>
+  </body>
+</html>

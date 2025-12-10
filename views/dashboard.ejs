@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Dashboard - <%=shopData.shopName%></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>My Dashboard</h1>
+    
+    <% if (user) { %>
+      <h2>Welcome, <%= user.firstName %> <%= user.lastName %></h2>
+      <p>Email: <%= user.email %></p>
+    <% } %>
+    
+    <hr>
+    
+    <h2>My Bookings</h2>
+    
+    <% if (bookings.length === 0) { %>
+      <p>You haven't booked any classes yet.</p>
+      <p><a href="/classes/booking">Book a class now</a></p>
+    <% } else { %>
+      <table border="1">
+        <tr>
+          <th>Class Title</th>
+          <th>Category</th>
+          <th>Level</th>
+          <th>Location</th>
+          <th>Date & Time</th>
+         
+          
+        </tr>
+        <% bookings.forEach(function(booking) { %>
+          <tr>
+            <td><%= booking.title %></td>
+            <td><%= booking.category %></td>
+            <td><%= booking.level %></td>
+            <td><%= booking.location %></td>
+            <td><%= new Date(booking.class_datetime).toLocaleString() %></td>
+            
+            
+          </tr>
+        <% }); %>
+      </table>
+      <p><a href="/classes/booking">Book another class</a></p>
+    <% } %>
+    
+    <hr>
+    <p><a href="/">Back to Home</a></p>
+  </body>
+</html>

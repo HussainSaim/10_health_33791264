@@ -14,7 +14,7 @@
         <th>Location</th>
         <th>Date & Time</th>
         <th>Capacity</th>
-        <th>Description</th>
+        
       </tr>
       <% availableClasses.forEach(function(classItem) { %>
         <tr>
@@ -24,7 +24,7 @@
           <td><%= classItem.location %></td>
           <td><%= classItem.class_datetime %></td>
           <td><%= classItem.capacity %></td>
-          <td><%= classItem.description %></td>
+          
         </tr>
       <% }); %>
     </table>

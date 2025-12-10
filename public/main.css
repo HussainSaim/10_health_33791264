@@ -1,13 +1,18 @@
+body{
+    background-color: darkgreen;
+    margin-left: 40px;
+    margin-right: 40px;
+}
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: darkcyan;
+    color: white;
 }
 
 h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: cadetblue;
+    color: whitesmoke;
 }
 
 p,li {
@@ -31,7 +36,7 @@ a:link {
   a:hover {
     color: white;
     text-decoration: none;
-    background-color: orangered;
+    background-color: darkgreen;
     padding:5px;
   }
   
@@ -41,3 +46,10 @@ a:link {
     text-decoration: none;
     padding:5px;
   }
+table, th, td {
+    border: 5px solid black;
+    border-collapse: collapse;
+    color: white;
+    background-color: darkgreen;
+    padding: 10px;
+}
