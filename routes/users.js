@@ -94,7 +94,7 @@ router.post('/loggedin', function (req, res, next) {
                         email: user.email
                     };
                     // Redirect to home page after successful login
-                    res.redirect('/classes');
+                    res.redirect('/usr/375');
                 }
                 else {
                     res.send('Login failed! Incorrect password.')
