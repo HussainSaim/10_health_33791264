@@ -1,1 +1,10 @@
 home=https://doc.gold.ac.uk/usr/375/
+about=https://www.doc.gold.ac.uk/usr/375/about
+search=https://www.doc.gold.ac.uk/usr/375/classes/search
+classes=https://www.doc.gold.ac.uk/usr/375/classes
+booking=https://www.doc.gold.ac.uk/usr/375/classes/booking
+register=https://www.doc.gold.ac.uk/usr/375/users/register
+login=https://www.doc.gold.ac.uk/usr/375/users/login
+dashboard=https://www.doc.gold.ac.uk/usr/375/users/dashboard
+logout=https://www.doc.gold.ac.uk/usr/375/logout
+addclasses=https://www.doc.gold.ac.uk/usr/375/classes/addclass
