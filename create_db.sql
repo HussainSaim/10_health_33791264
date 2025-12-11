@@ -1,9 +1,9 @@
 -- create_db.sql
 
--- Create database (you can change the name if you want)
 CREATE DATABASE IF NOT EXISTS health;
 USE health;
 
+-- Users table
  CREATE TABLE IF NOT EXISTS users (
     id              INT AUTO_INCREMENT,
     username        VARCHAR(50) NOT NULL UNIQUE,

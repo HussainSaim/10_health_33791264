@@ -1,4 +1,4 @@
-// Create a new router
+// routes for main pages
 const express = require("express")
 const router = express.Router()
 const { redirectLogin } = require('./users')
@@ -17,8 +17,8 @@ router.get('/about',function(req, res, next){
 // Export the router object so index.js can access it
 module.exports = router
 
-router.get('/logout', redirectLogin, (req,res) => {
-    req.session.destroy(err => {
+router.get('/logout', redirectLogin, (req,res) => {         // Logout route
+    req.session.destroy(err => {                       
     if (err) {
         return res.redirect('./')
     }

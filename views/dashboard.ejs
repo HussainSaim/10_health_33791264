@@ -8,7 +8,7 @@
     <h1>My Dashboard</h1>
     
     <% if (user) { %>
-      <h2>Welcome, <%= user.firstName %> <%= user.lastName %></h2>
+      <h2>Welcome, <%= user.firstName %> <%= user.lastName %></h2>    <!-- Display user's name if logged in -->
       <p>Email: <%= user.email %></p>
     <% } %>
     
@@ -18,7 +18,7 @@
     
     <% if (bookings.length === 0) { %>
       <p>You haven't booked any classes yet.</p>
-      <p><a href="/classes/booking">Book a class now</a></p>
+      <p><a href="/classes/booking">Book a class now</a></p>  <!-- Link to booking page -->
     <% } else { %>
       <table border="1">
         <tr>
@@ -34,7 +34,7 @@
           <tr>
             <td><%= booking.title %></td>
             <td><%= booking.category %></td>
-            <td><%= booking.level %></td>
+            <td><%= booking.level %></td> <!-- Display booking details -->
             <td><%= booking.location %></td>
             <td><%= new Date(booking.class_datetime).toLocaleString() %></td>
             
